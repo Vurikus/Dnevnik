@@ -1,7 +1,7 @@
 {
 	"_type": "Project",
 	"_id": "AAAAAAFF+h6SjaM2Hec=",
-	"name": "Untitled",
+	"nameLearner": "Untitled",
 	"ownedElements": [
 		{
 			"_type": "UMLModel",
@@ -9,7 +9,7 @@
 			"_parent": {
 				"$ref": "AAAAAAFF+h6SjaM2Hec="
 			},
-			"name": "Model",
+			"nameLearner": "Model",
 			"ownedElements": [
 				{
 					"_type": "UMLClassDiagram",
@@ -17,7 +17,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Main",
+					"nameLearner": "Main",
 					"defaultDiagram": true,
 					"ownedViews": [
 						{
@@ -865,7 +865,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Class",
+					"nameLearner": "Class",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -873,7 +873,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF0jdWx/EO9Aw0="
 							},
-							"name": "List <Learner>",
+							"nameLearner": "List <Learner>",
 							"visibility": "private",
 							"type": ""
 						}
@@ -885,7 +885,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Learner",
+					"nameLearner": "Learner",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -893,7 +893,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF0jddYDUPn1W0="
 							},
-							"name": "Map <Subject, mark>",
+							"nameLearner": "Map <Subject, mark>",
 							"visibility": "private",
 							"type": ""
 						}
@@ -905,7 +905,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Teacher",
+					"nameLearner": "Teacher",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -913,7 +913,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF0jdtUMkQo6qE="
 							},
-							"name": "List <Subject>",
+							"nameLearner": "List <Subject>",
 							"visibility": "private",
 							"type": ""
 						}
@@ -925,7 +925,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Model"
+					"nameLearner": "Model"
 				},
 				{
 					"_type": "UMLClass",
@@ -933,7 +933,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Subject"
+					"nameLearner": "Subject"
 				}
 			]
 		}

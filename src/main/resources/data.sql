@@ -7,7 +7,7 @@ CREATE TABLE class(
 
 CREATE TABLE learner(
   idLearner SERIAL PRIMARY KEY,
-  name VARCHAR (50) not null,
+  nameLearner VARCHAR (50) not null,
   idClass integer DEFAULT (null),
   FOREIGN KEY (idClass) REFERENCES class(idClass)
 );
