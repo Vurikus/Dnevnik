@@ -17,7 +17,7 @@
         </thead>
         <tbody>
         <tr th:each="schoolClass:${listSchoolClass}">
-            <td th:utext="${int}" th:with = "int = ${int+1}"></td>
+            <td th:utext="${int}" th:with = "int = ${int+1} "></td>
             <td th:utext="${schoolClass.nameClass}"></td>
         </tr>
         </tbody>
