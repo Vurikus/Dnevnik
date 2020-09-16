@@ -1,15 +1,14 @@
 package my.web.model;
 
-public class Class {
+public class SchoolClass {
 
     private int idClass;
     private String nameClass;
 
-    public Class() {
+    public SchoolClass() {
     }
 
-    public Class(int idClass, String nameClass) {
-        this.idClass = idClass;
+    public SchoolClass(String nameClass) {
         this.nameClass = nameClass;
     }
 

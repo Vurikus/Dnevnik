@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
@@ -44,6 +45,16 @@ public class SpringConfig implements WebMvcConfigurer {
         return templateEngine;
     }
 
+    @Bean
+    public DriverManagerDataSource managerDataSource(){
+        DriverManagerDataSource manager = new DriverManagerDataSource();
+        manager.setDriverClassName("org.postgresql.Driver");
+        manager.setUrl("jdbc:postgresql://localhost:5432/postgres");
+        manager.setUsername("postgres");
+        manager.setPassword("123");
+        return manager;
+    }
+
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
@@ -51,18 +62,18 @@ public class SpringConfig implements WebMvcConfigurer {
         registry.viewResolver(resolver);
     }
 
-    @Bean
-    public CommonsMultipartResolver multipartResolver(){
-        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
-        resolver.setMaxUploadSize(1000000);
-        return resolver;
-    }
-
-    @Bean
-    public XmlViewResolver xmlViewResolver() {
-        XmlViewResolver resolver = new XmlViewResolver();
-        resolver.setOrder(0);
-        return resolver;
-    }
+//    @Bean
+//    public CommonsMultipartResolver multipartResolver(){
+//        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+//        resolver.setMaxUploadSize(1000000);
+//        return resolver;
+//    }
+//
+//    @Bean
+//    public XmlViewResolver xmlViewResolver() {
+//        XmlViewResolver resolver = new XmlViewResolver();
+//        resolver.setOrder(0);
+//        return resolver;
+//    }
 
 }
