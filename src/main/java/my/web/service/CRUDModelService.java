@@ -12,55 +12,71 @@ import java.util.List;
 public class CRUDModelService implements CRUDService {
 
     @Autowired
-    private CRUDdao<SchoolClass> serviceSchoolClass;
+    private CRUDdao<SchoolClass> daoSchoolClass;
+    @Autowired
+    private CRUDdao<Teacher> daoTeacher;
+    @Autowired
+    private CRUDdao<Mark> daoMark;
+    @Autowired
+    private CRUDdao<Learner> daoLearner;
+    @Autowired
+    private CRUDdao<Subject> daoSubject;
 
+    //TEACHER
     @Override
     public void addTeacher(Teacher teacher) {
-
+        daoTeacher.add(teacher);
     }
-
-    @Override
-    public void addSubject(Subject subject) {
-
-    }
-
-    @Override
-    public void addSchoolClass(SchoolClass schoolClass) {
-        serviceSchoolClass.add(schoolClass);
-    }
-
-    @Override
-    public void addMark(Mark mark) {
-
-    }
-
-    @Override
-    public void addLearner(Learner learner) {
-
-    }
-
     @Override
     public List<Teacher> getAllTeacher() {
-        return null;
+        return daoTeacher.getAll();
     }
-
     @Override
-    public List<Subject> getAllSubject() {
-        return null;
+    public Teacher getTeacher(int idTeacher) {
+        return daoTeacher.get(idTeacher);
     }
 
+    //SUBJECT
+    @Override
+    public void addSubject(Subject subject) {
+        daoSubject.add(subject);
+    }
+    @Override
+    public List<Subject> getAllSubject(int idTeacher) {
+        return daoSubject.getAllForId(idTeacher);
+    }
+
+    //SCHOOL_CLASS
+    @Override
+    public void addSchoolClass(SchoolClass schoolClass) {
+        daoSchoolClass.add(schoolClass);
+    }
     @Override
     public List<SchoolClass> getAllSchoolClass() {
-        return serviceSchoolClass.getAll();
+        return daoSchoolClass.getAll();
     }
 
+    //MARKS
+    @Override
+    public void addMark(Mark mark) {
+        daoMark.add(mark);
+    }
     @Override
     public List<Mark> getAllMark() {
-        return null;
+        return daoMark.getAll();
     }
 
+    //LEARNER
+    @Override
+    public void addLearner(Learner learner) {
+        daoLearner.add(learner);
+    }
     @Override
     public List<Learner> getAllLearner() {
+        return daoLearner.getAll();
+    }
+    @Override
+    public Learner getLearner(int idLearner) {
         return null;
     }
 }

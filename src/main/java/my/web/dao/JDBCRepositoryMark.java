@@ -38,6 +38,11 @@ public class JDBCRepositoryMark implements CRUDdao<Mark> {
     }
 
     @Override
+    public List<Mark> getAllForId(int id) {
+        return null;
+    }
+
+    @Override
     public void update(Mark mark) {
 
     }

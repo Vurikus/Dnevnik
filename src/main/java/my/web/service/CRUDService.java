@@ -6,14 +6,20 @@ import java.util.List;
 
 public interface CRUDService {
     void addTeacher(Teacher teacher);
-    void addSubject(Subject subject);
-    void addSchoolClass(SchoolClass schoolClass);
-    void addMark(Mark mark);
-    void addLearner(Learner learner);
+    Teacher getTeacher(int idTeacher);
     List<Teacher> getAllTeacher();
-    List<Subject> getAllSubject();
+
+    void addSubject(Subject subject);
+    List<Subject> getAllSubject(int idTeacher);
+
+    void addSchoolClass(SchoolClass schoolClass);
     List<SchoolClass> getAllSchoolClass();
+
+    void addMark(Mark mark);
     List<Mark> getAllMark();
+
+    void addLearner(Learner learner);
     List<Learner> getAllLearner();
+    Learner getLearner (int idLearner);
 
 }

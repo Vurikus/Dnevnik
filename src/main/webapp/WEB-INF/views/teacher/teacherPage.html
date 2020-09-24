@@ -7,29 +7,29 @@
 <body>
     <h1>TEACHER PAGE</h1>
     <br/>
-    <div th:with = "int = 1">
-    <table>
-        <thead>
-        <tr>
-            <th>Num</th>
-            <th>Name class</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="schoolClass:${listSchoolClass}">
-            <td th:utext="${int}" th:with = "int = ${int+1} "></td>
-            <td th:utext="${schoolClass.nameClass}"></td>
-        </tr>
-        </tbody>
-    </table>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>Name class</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="schoolClass:${listSchoolClass}" >
+                    <td th:utext="${schoolClass.nameClass}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <form name="formAddSchoolClass" method="post">
+            <label>Name class:
+                <input type="text" name="nameClass" required data-validation-required-message="Please enter class name">
+                <br/>
+            </label>
+            <button type="submit">Create class</button>
+        </form>
     </div>
 
-    <form name="formAddSchoolClass" method="post">
-        <label>Name class:
-            <input type="text" name="nameClass" required data-validation-required-message="Please enter class name">
-            <br/>
-        </label>
-        <button type="submit">Create class</button>
-    </form>
+
 </body>
 </html>

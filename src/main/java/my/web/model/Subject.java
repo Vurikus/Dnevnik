@@ -9,8 +9,7 @@ public class Subject {
     public Subject() {
     }
 
-    public Subject(int idSubject, String nameSubject, int idTeacher) {
-        this.idSubject = idSubject;
+    public Subject(String nameSubject, int idTeacher) {
         this.nameSubject = nameSubject;
         this.idTeacher = idTeacher;
     }

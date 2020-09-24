@@ -51,6 +51,11 @@ public class JDBCRepositorySchoolClass implements CRUDdao<SchoolClass> {
     }
 
     @Override
+    public List<SchoolClass> getAllForId(int id) {
+        return null;
+    }
+
+    @Override
     public void update(SchoolClass schoolClass) {
 
     }

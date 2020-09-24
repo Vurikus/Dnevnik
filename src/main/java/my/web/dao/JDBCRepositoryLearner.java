@@ -37,9 +37,14 @@ public class JDBCRepositoryLearner implements CRUDdao<Learner> {
     }
 
     @Override
-    public void update(Learner learner) {
-
+    public List<Learner> getAllForId(int id) {
+        return null;
     }
+
+    @Override
+    public void update(Learner learner) {
+    }
+
 
     @Override
     public void delete(Learner learner) {
