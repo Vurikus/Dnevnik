@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-//@RequestMapping("/teacher")
+@RequestMapping("/teacher")
 public class TeacherController {
 
     @Autowired
@@ -30,19 +30,33 @@ public class TeacherController {
     }
 
     @PostMapping("/class")
-    public String addSchoolClass(@RequestParam(value = "nameClass") String nameClass){
+    public String addSchoolClass(@RequestParam(value = "newClass") String nameClass){
         crudService.addSchoolClass(new SchoolClass(nameClass));
-        return "redirect:/class";
+        return "redirect:/teacher/class";
     }
-    @GetMapping("/subject")
-    public String getSubjectPage(Model model){
+    @GetMapping("/subject/{className}")
+    public String getSubjectPage(@PathVariable (value = "className", required = false) String className,
+                                 @RequestParam(value = "action", required = false) String action,
+                                 Model model){
+        model.addAttribute("className", className);
+        switch (action){
+            case "edit": {
+                return "teacher/edit" ;
+            }
+            case "delete": {
+                crudService.deleteSchoolClass(new SchoolClass(className));
+                return "redirect:/teacher/class";
+            }
+        }
         model.addAttribute("listSubject", crudService.getAllSubject(idTeacher));
         return "teacher/subjectPage";
     }
 
-    @PostMapping("/subject")
-    public String addSubject(@RequestParam(value = "newSubject") String nameSubject){
+    @PostMapping("/subject/{className}")
+    public String addSubject(@RequestParam(value = "newSubject") String nameSubject,
+                             @PathVariable(value = "className", required = false) String className){
+
         crudService.addSubject(new Subject(nameSubject, idTeacher));
-        return "redirect:/subject";
+        return "redirect:/teacher/subject/" + className;
     }
 }

@@ -10,9 +10,11 @@ public interface CRUDService {
     List<Teacher> getAllTeacher();
 
     void addSubject(Subject subject);
+    void deleteSubject (String nameSubject);
     List<Subject> getAllSubject(int idTeacher);
 
     void addSchoolClass(SchoolClass schoolClass);
+    void deleteSchoolClass (SchoolClass schoolClass);
     List<SchoolClass> getAllSchoolClass();
 
     void addMark(Mark mark);

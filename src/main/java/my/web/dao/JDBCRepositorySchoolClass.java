@@ -57,11 +57,13 @@ public class JDBCRepositorySchoolClass implements CRUDdao<SchoolClass> {
 
     @Override
     public void update(SchoolClass schoolClass) {
-
+        //final String UPDATE_SQL = "UPDATE class SET className = ? WHERE className = ?;";
+        //this.jdbcTemplate.update(UPDATE_SQL, schoolClass.getNameClass());
     }
 
     @Override
     public void delete(SchoolClass schoolClass) {
-
+        final String DELETE_SQL = "DELETE FROM class WHERE className = ?;";
+        this.jdbcTemplate.update(DELETE_SQL, schoolClass.getNameClass());
     }
 }

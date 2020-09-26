@@ -1,6 +1,7 @@
 package my.web.service;
 
 import my.web.dao.CRUDdao;
+import my.web.dao.JDBCRepositorySubject;
 import my.web.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,6 +43,11 @@ public class CRUDModelService implements CRUDService {
         daoSubject.add(subject);
     }
     @Override
+    public void deleteSubject(String nameSubject) {
+
+    }
+
+    @Override
     public List<Subject> getAllSubject(int idTeacher) {
         return daoSubject.getAllForId(idTeacher);
     }
@@ -51,6 +57,12 @@ public class CRUDModelService implements CRUDService {
     public void addSchoolClass(SchoolClass schoolClass) {
         daoSchoolClass.add(schoolClass);
     }
+
+    @Override
+    public void deleteSchoolClass(SchoolClass schoolClass) {
+        daoSchoolClass.delete(schoolClass);
+    }
+
     @Override
     public List<SchoolClass> getAllSchoolClass() {
         return daoSchoolClass.getAll();
