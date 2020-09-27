@@ -5,13 +5,15 @@ public class Subject {
     private int idSubject;
     private String nameSubject;
     private int idTeacher;
+    private int idClass;
 
     public Subject() {
     }
 
-    public Subject(String nameSubject, int idTeacher) {
+    public Subject(String nameSubject, int idTeacher, int idClass) {
         this.nameSubject = nameSubject;
         this.idTeacher = idTeacher;
+        this.idClass = idClass;
     }
 
     public int getIdSubject() {
@@ -37,4 +39,23 @@ public class Subject {
     public void setIdTeacher(int idTeacher) {
         this.idTeacher = idTeacher;
     }
+
+    public int getIdClass() {
+        return idClass;
+    }
+
+    public void setIdClass(int idClass) {
+        this.idClass = idClass;
+    }
+
+    @Override
+    public String toString() {
+        return "Subject{" +
+                "idSubject=" + idSubject +
+                ", nameSubject='" + nameSubject + '\'' +
+                ", idTeacher=" + idTeacher +
+                ", idClass=" + idClass +
+                '}';
+    }
 }
+

@@ -26,13 +26,25 @@ public class JDBCRepositorySubject implements CRUDdao<Subject> {
 
     @Override
     public void add(Subject subject) {
-        final String INSERT_SUBJECT = "INSERT INTO subject (subjectName, idTeacher) VALUES (?, ?);";
-        this.jdbcTemplate.update(INSERT_SUBJECT, subject.getNameSubject(), subject.getIdTeacher());
+        final String INSERT_SUBJECT = "INSERT INTO subject (subjectName, idTeacher, idclass) VALUES (?, ?, ?);";
+        this.jdbcTemplate.update(INSERT_SUBJECT, subject.getNameSubject(), subject.getIdTeacher(), subject.getIdClass());
     }
 
     @Override
     public Subject get(int id) {
-        return null;
+        final String SELECT_SQL = "SELECT * FROM subject WHERE idSubject = ?;";
+        Subject subject = this.jdbcTemplate.queryForObject(SELECT_SQL, new Object[]{id}, new RowMapper<Subject>() {
+            @Override
+            public Subject mapRow(ResultSet rs, int i) throws SQLException {
+                Subject s = new Subject();
+                s.setIdSubject(rs.getInt("idSubject"));
+                s.setNameSubject(rs.getString("subjectName"));
+                s.setIdClass(rs.getInt("idClass"));
+                s.setIdTeacher(rs.getInt("idTeacher"));
+                return s;
+            }
+        });
+        return subject;
     }
 
     @Override
@@ -46,8 +58,10 @@ public class JDBCRepositorySubject implements CRUDdao<Subject> {
         List<Subject> subjectList = this.jdbcTemplate.query(QUERY_SQL, new RowMapper<Subject>() {
             public Subject mapRow(ResultSet rs, int rowNum) throws SQLException {
                 Subject subject = new Subject();
+                subject.setIdSubject(rs.getInt("idSubject"));
                 subject.setNameSubject(rs.getString("subjectName"));
                 subject.setIdTeacher(rs.getInt("idTeacher"));
+                subject.setIdClass(rs.getInt("idClass"));
                 return subject;
             }
         });
@@ -61,6 +75,7 @@ public class JDBCRepositorySubject implements CRUDdao<Subject> {
 
     @Override
     public void delete(Subject subject) {
-
+        final String DELETE_SQL = "DELETE FROM subject WHERE idSubject = ?;";
+        this.jdbcTemplate.update(DELETE_SQL, subject.getIdSubject());
     }
 }

@@ -10,8 +10,9 @@ public interface CRUDService {
     List<Teacher> getAllTeacher();
 
     void addSubject(Subject subject);
-    void deleteSubject (String nameSubject);
-    List<Subject> getAllSubject(int idTeacher);
+    Subject getSubject(int idSubject);
+    void deleteSubject (int idSubject);
+    List<Subject> getAllSubject(int idTeacher, int idClass);
 
     void addSchoolClass(SchoolClass schoolClass);
     SchoolClass getSchoolClass (int idClass);
@@ -23,7 +24,7 @@ public interface CRUDService {
     List<Mark> getAllMark();
 
     void addLearner(Learner learner);
-    List<Learner> getAllLearner();
+    List<Learner> getAllLearner(int idClass);
     Learner getLearner (int idLearner);
 
 }

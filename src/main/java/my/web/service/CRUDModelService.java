@@ -6,6 +6,7 @@ import my.web.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -43,12 +44,23 @@ public class CRUDModelService implements CRUDService {
         daoSubject.add(subject);
     }
     @Override
-    public void deleteSubject(String nameSubject) {
-
+    public Subject getSubject(int idSubject) {
+        return daoSubject.get(idSubject);
     }
     @Override
-    public List<Subject> getAllSubject(int idTeacher) {
-        return daoSubject.getAllForId(idTeacher);
+    public void deleteSubject(int idSubject) {
+        Subject s = new Subject();
+        s.setIdSubject(idSubject);
+        daoSubject.delete(s);
+    }
+    @Override
+    public List<Subject> getAllSubject(int idTeacher, int idClass) {
+        List<Subject> listSubjectSomeTeacher = daoSubject.getAllForId(idTeacher);
+        List<Subject> listSubjectSomeTeacherSomeClass = new ArrayList<>();
+        for(Subject subject:listSubjectSomeTeacher){
+            if(subject.getIdClass()==idClass) listSubjectSomeTeacherSomeClass.add(subject);
+        }
+        return listSubjectSomeTeacherSomeClass;
     }
 
 
@@ -92,8 +104,8 @@ public class CRUDModelService implements CRUDService {
         daoLearner.add(learner);
     }
     @Override
-    public List<Learner> getAllLearner() {
-        return daoLearner.getAll();
+    public List<Learner> getAllLearner(int idClass) {
+        return daoLearner.getAllForId(idClass);
     }
     @Override
     public Learner getLearner(int idLearner) {
