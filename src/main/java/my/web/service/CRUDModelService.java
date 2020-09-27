@@ -46,27 +46,34 @@ public class CRUDModelService implements CRUDService {
     public void deleteSubject(String nameSubject) {
 
     }
-
     @Override
     public List<Subject> getAllSubject(int idTeacher) {
         return daoSubject.getAllForId(idTeacher);
     }
+
 
     //SCHOOL_CLASS
     @Override
     public void addSchoolClass(SchoolClass schoolClass) {
         daoSchoolClass.add(schoolClass);
     }
-
+    @Override
+    public SchoolClass getSchoolClass(int idClass) {
+        return daoSchoolClass.get(idClass);
+    }
+    @Override
+    public void updateSchoolClass(SchoolClass schoolClass) {
+        daoSchoolClass.update(schoolClass);
+    }
     @Override
     public void deleteSchoolClass(SchoolClass schoolClass) {
         daoSchoolClass.delete(schoolClass);
     }
-
     @Override
     public List<SchoolClass> getAllSchoolClass() {
         return daoSchoolClass.getAll();
     }
+
 
     //MARKS
     @Override
@@ -77,6 +84,7 @@ public class CRUDModelService implements CRUDService {
     public List<Mark> getAllMark() {
         return daoMark.getAll();
     }
+
 
     //LEARNER
     @Override

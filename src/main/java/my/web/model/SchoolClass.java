@@ -11,7 +11,10 @@ public class SchoolClass {
     public SchoolClass(String nameClass) {
         this.nameClass = nameClass;
     }
-
+    public SchoolClass(int idClass, String nameClass) {
+        this.idClass = idClass;
+        this.nameClass = nameClass;
+    }
     public int getIdClass() {
         return idClass;
     }

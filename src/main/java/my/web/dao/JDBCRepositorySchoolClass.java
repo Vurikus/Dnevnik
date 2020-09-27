@@ -33,7 +33,14 @@ public class JDBCRepositorySchoolClass implements CRUDdao<SchoolClass> {
 
     @Override
     public SchoolClass get(int id) {
-        return null;
+        final String SELECT_SQL = "SELECT * FROM class WHERE idClass = ?;";
+        SchoolClass schoolClass = this.jdbcTemplate.queryForObject(SELECT_SQL, new Object[]{id}, new RowMapper<SchoolClass>() {
+            @Override
+            public SchoolClass mapRow(ResultSet rs, int i) throws SQLException {
+                return new SchoolClass(rs.getInt("idClass"), rs.getString("className"));
+            }
+        });
+        return schoolClass;
     }
 
     @Override
@@ -57,13 +64,13 @@ public class JDBCRepositorySchoolClass implements CRUDdao<SchoolClass> {
 
     @Override
     public void update(SchoolClass schoolClass) {
-        //final String UPDATE_SQL = "UPDATE class SET className = ? WHERE className = ?;";
-        //this.jdbcTemplate.update(UPDATE_SQL, schoolClass.getNameClass());
+        final String UPDATE_SQL = "UPDATE class SET className = ? WHERE idClass = ?;";
+        this.jdbcTemplate.update(UPDATE_SQL, schoolClass.getNameClass(), schoolClass.getIdClass());
     }
 
     @Override
     public void delete(SchoolClass schoolClass) {
-        final String DELETE_SQL = "DELETE FROM class WHERE className = ?;";
-        this.jdbcTemplate.update(DELETE_SQL, schoolClass.getNameClass());
+        final String DELETE_SQL = "DELETE FROM class WHERE idClass = ?;";
+        this.jdbcTemplate.update(DELETE_SQL, schoolClass.getIdClass());
     }
 }

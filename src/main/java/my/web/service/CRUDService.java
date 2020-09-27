@@ -14,7 +14,9 @@ public interface CRUDService {
     List<Subject> getAllSubject(int idTeacher);
 
     void addSchoolClass(SchoolClass schoolClass);
+    SchoolClass getSchoolClass (int idClass);
     void deleteSchoolClass (SchoolClass schoolClass);
+    void updateSchoolClass (SchoolClass schoolClass);
     List<SchoolClass> getAllSchoolClass();
 
     void addMark(Mark mark);
